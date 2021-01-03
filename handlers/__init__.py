@@ -1,3 +1,3 @@
-# load all handlers from files in this directory
+"""Loads all handlers from files in this directory"""
 from . import general_cmds
 from . import associations

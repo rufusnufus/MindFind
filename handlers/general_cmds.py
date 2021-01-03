@@ -1,9 +1,10 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from decouple import config
-from app import dp, bot
+from dotenv import load_dotenv
+import os
+from bot import dp, bot
 
-ADMIN_TELEGRAM_ID = config("ADMIN_ID")
+ADMIN_TELEGRAM_ID = os.environ.get("ADMIN_ID")
 
 
 @dp.message_handler(commands="start")
