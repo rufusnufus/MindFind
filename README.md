@@ -1,6 +1,6 @@
 # MindFind
 Telegram Bot for creating and using your own phrase->sticker associations with stickers.
-
+Demo: [@MindFindBot](https://t.me/MindFindBot)
 ### Installation:
 1. `git clone https://github.com/rufusnufus/MindFind`
 2. `cd MindFind`
