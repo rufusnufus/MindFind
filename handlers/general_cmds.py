@@ -3,6 +3,7 @@ from aiogram.dispatcher import FSMContext
 from dotenv import load_dotenv
 import os
 from bot import dp, bot
+from db_worker import check_and_add_user
 
 ADMIN_TELEGRAM_ID = os.environ.get("ADMIN_ID")
 
@@ -12,6 +13,7 @@ async def send_welcome(message: types.Message):
     """
     This handler will be called when user sends `/start` command
     """
+    check_and_add_user(message.from_user.id)
     await message.reply("Hi!\nHere you can create associations between phrases and stickers.\nTo start send me association first, then sticker that is suitable.")
 
 

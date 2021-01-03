@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from bot import dp
-
+from db_worker import add_assoc
 class AddAssoc(StatesGroup):
     """States order of adding association feature"""
     waiting_for_sticker = State()
@@ -27,6 +27,7 @@ async def assoc_step_2(message: types.Message, state: FSMContext):
 async def food_step_3(message: types.Message, state: FSMContext):
     user_data = await state.get_data()
     ans = (f"Your new associaion:\nSticker ID: <code>{user_data['sticker_id']}</code>\n"
-            "Text: {message.text.lower()}\n")
+            f"Text: {message.text.lower()}\n")
+    add_assoc(message.from_user.id, user_data['sticker_id'], message.text.lower())
     await message.answer(ans)
     await state.finish()
