@@ -1,2 +1,16 @@
 # MindFind
 Telegram Bot for creating and using your own phrase->sticker associations with stickers.
+
+### Installation:
+1. `git clone https://github.com/rufusnufus/MindFind`
+2. `cd MindFind`
+3. `source venv/bin/python`
+4. `pip install -r requirements.txt`
+5. `chmod +x start.py`
+
+### Variables in .env file need to be specified(`touch .env && nano .env`):
+* API_TOKEN - API token of the bot given by [@BotFather in Telegram](https://t.me/BotFather)
+* DB_USER - MongoDB username to access your cluster on [Atlas](https://www.mongodb.com/cloud/atlas)
+* DB_PASS - MongoDB password to access your cluster on [Atlas](https://www.mongodb.com/cloud/atlas)
+* DB_NAME - database name
+* ADMIN_ID - Telegram ID of the bot owner
