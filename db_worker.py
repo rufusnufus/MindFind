@@ -17,7 +17,6 @@ db = client[DB_NAME]
 def check_and_add_user(user_id):
     if db.users.find_one({'user_id': user_id}) == None:
         new_user = {
-            'sticks_to_text': {},
             'text_to_sticks': {},
             'user_id': user_id
         }
@@ -25,14 +24,15 @@ def check_and_add_user(user_id):
     return
 
 def add_assoc(user_id, sticker_id, text):
+    print(type(sticker_id))
+    print(type(text))
     user = db.users.find_one({'user_id':user_id})
-    if sticker_id in user['sticks_to_text']:
-        user['sticks_to_text'][sticker_id].append(text)
-    else:
-        user['sticks_to_text'][sticker_id] = [text]
-    
     if text in user['text_to_sticks']:
         user['text_to_sticks'][text].append(sticker_id)
     else:
         user['text_to_sticks'][text] = [sticker_id]
+    db.users.update_one({'user_id':user_id}, {"$set": {"text_to_sticks": user['text_to_sticks']}})
 
+def find_stickers(user_id, text):
+    user = db.users.find_one({'user_id':user_id})
+    return user['text_to_sticks'][text]
