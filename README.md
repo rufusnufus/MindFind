@@ -1,5 +1,5 @@
 # MindFind
-Telegram Bot for creating and using your own phrase->sticker associations with stickers. 
+Assign codewords for stickers you use to easily access them when you need in Telegram.
 Demo: [@MindFindBot](https://t.me/MindFindBot)
 
 ### Installation:
