@@ -14,7 +14,7 @@ async def send_welcome(message: types.Message):
     This handler will be called when user sends `/start` command
     """
     check_and_add_user(message.from_user.id)
-    answer = ("Hi!\nAdd the codeword typing /add_codeword or pressing the button that has appeared💫")
+    answer = "Hi!\nAdd the codeword typing /add_codeword or pressing the button that has appeared💫"
     await message.reply(answer, reply_markup=codeword_kb)
 
 

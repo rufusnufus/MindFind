@@ -44,7 +44,7 @@ async def food_step_3(message: types.Message, state: FSMContext):
     user_data = await state.get_data()
     ans = ("Great! New codeword is added😸\n"
             "To try it out in any chat you want write:\n"
-            f"@MindFind {message.text}")
+            f"@MindFindBot {message.text}")
     add_codeword(message.from_user.id, user_data['sticker_id'], message.text.lower())
     await message.answer(ans, reply_markup=codeword_kb)
     await state.finish()
