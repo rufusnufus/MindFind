@@ -15,6 +15,7 @@ async def inline_echo(inline_query: InlineQuery):
         Stickers that are associated by user with entered query.
     """
     text = inline_query.query or 'echo'
+    text = text.lower()
     stickers = find_stickers(inline_query.from_user.id, text)
     results = []
     for sticker in stickers:
