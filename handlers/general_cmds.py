@@ -1,7 +1,7 @@
-from aiogram import types
-from aiogram.dispatcher import FSMContext
-from dotenv import load_dotenv
+"""This script defines general commands for interaction with bot"""
+
 import os
+from aiogram import types
 from bot import dp, bot
 from db_worker import check_and_add_user
 
@@ -14,7 +14,9 @@ async def send_welcome(message: types.Message):
     This handler will be called when user sends `/start` command
     """
     check_and_add_user(message.from_user.id)
-    await message.reply("Hi!\nHere you can create associations between phrases and stickers.\nTo start send me association first, then sticker that is suitable.")
+    answer = ("Hi!\nHere you can create associations between phrases and stickers.\n"
+            "To start send me association first, then sticker that is suitable.")
+    await message.reply(answer)
 
 
 @dp.message_handler(commands="set_commands", state="*")
@@ -26,4 +28,3 @@ async def set_commands(message: types.Message):
         commands = [types.BotCommand(command="/add_association", description="Add new association")]
         await bot.set_my_commands(commands)
         await message.answer("Commands are set.")
-

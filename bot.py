@@ -4,7 +4,9 @@ import logging
 import os
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from db_worker import db
+from dotenv import load_dotenv
+
+load_dotenv()
 
 API_TOKEN=os.environ.get("API_TOKEN")
 
