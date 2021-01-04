@@ -28,7 +28,7 @@ def check_and_add_user(user_id):
         db.users.insert_one(new_user)
 
 
-def add_assoc(user_id, sticker_id, text):
+def add_codeword(user_id, sticker_id, text):
     """
     Adds new text-sticker binding of specified user
     Parameters:
@@ -51,8 +51,21 @@ def find_stickers(user_id, text):
         user_id: Telegram ID of the user
         text: text that user entered as association to find sticker
     Returns:
-        result: list of file_ids of all stickers with specified text association
+        result: list of file_ids of all stickers with specified codeword
     """
     user = db.users.find_one({'user_id':user_id})
     result = user['text_to_sticks'][text]
+    return result
+
+
+def find_codewords(user_id):
+    """
+    Finds all codewords of the user
+    Parameter:
+        user_id: Telegram ID of the user
+    Returns:
+        result: list of all codewords
+    """
+    user = db.users.find_one({'user_id':user_id})
+    result = user['text_to_sticks'].keys()
     return result

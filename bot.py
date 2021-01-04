@@ -17,5 +17,5 @@ memory_storage = MemoryStorage()
 dp = Dispatcher(bot, storage=memory_storage)
 logging.basicConfig(level=logging.DEBUG)
 
-button_assoc = KeyboardButton("Add association 😉")
-assoc_kb = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button_assoc)
+button_codeword = KeyboardButton("Add codeword 😉")
+codeword_kb = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button_codeword)
