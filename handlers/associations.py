@@ -2,10 +2,10 @@
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from bot import dp
+from bot import dp, assoc_kb
 from db_worker import add_assoc
-
 class AddAssoc(StatesGroup):
     """
     States order of adding association feature
@@ -15,11 +15,12 @@ class AddAssoc(StatesGroup):
 
 
 @dp.message_handler(commands="add_association", state="*")
+@dp.message_handler(Text(equals="Add association 😉", ignore_case=False), state="*")
 async def assoc_step_1(message: types.Message):
     """
     Answers on /add_association command, changes the state of FSM
     """
-    await message.answer("Send me a sticker🐣")
+    await message.answer("Send me a sticker", reply_markup=types.ReplyKeyboardRemove())
     await AddAssoc.waiting_for_sticker.set()
 
 
@@ -30,7 +31,7 @@ async def assoc_step_2(message: types.Message, state: FSMContext):
     """
     await state.update_data(sticker_id=message.sticker.file_id)
     await AddAssoc.next()
-    await message.answer("Now send me the association🐥")
+    await message.answer("Now send me the association")
 
 
 @dp.message_handler(state=AddAssoc.waiting_for_text, content_types=types.ContentTypes.TEXT)
@@ -41,5 +42,5 @@ async def food_step_3(message: types.Message, state: FSMContext):
     user_data = await state.get_data()
     ans = ("Great! New association is created😸\nDon't waste time. Test it in inline mode😻")
     add_assoc(message.from_user.id, user_data['sticker_id'], message.text.lower())
-    await message.answer(ans)
+    await message.answer(ans, reply_markup=assoc_kb)
     await state.finish()
