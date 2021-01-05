@@ -5,9 +5,10 @@ Demo: [@MindFindBot](https://t.me/MindFindBot)
 ### Installation:
 1. `git clone https://github.com/rufusnufus/MindFind`
 2. `cd MindFind`
-3. `source venv/bin/python`
-4. `pip install -r requirements.txt`
-5. `chmod +x start.py`
+3. `python -m venv venv`
+4. `source venv/bin/activate`
+5. `pip install -r requirements.txt`
+6. `chmod +x start.py`
 
 ### Variables in .env file need to be specified:
 * API_TOKEN - API token of the bot given by [@BotFather in Telegram](https://t.me/BotFather)
