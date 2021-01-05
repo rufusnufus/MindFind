@@ -3,6 +3,7 @@ Assign codewords for stickers you use to easily access them when you need in Tel
 Demo: [@MindFindBot](https://t.me/MindFindBot)
 
 ## What you should do to run the application locally
+### Using Docker
 1. You need to install [Docker](https://www.docker.com/):
 2. `git clone https://github.com/rufusnufus/MindFind`
 3. `cd MindFind`
@@ -14,6 +15,15 @@ sudo docker build -t app .
 ```bash
 sudo docker run -d --env-file .env app
 ```
+
+### Without Docker
+1. `git clone https://github.com/rufusnufus/MindFind`
+2. `cd MindFind`
+3. `python -m venv venv`
+4. `source venv/bin/activate`
+5. `pip install -r requirements.txt`
+6. `chmod +x start.py`
+7. `python start.py`
 
 ### Variables in .env file need to be specified:
 * API_TOKEN - API token of the bot given by [@BotFather in Telegram](https://t.me/BotFather)
